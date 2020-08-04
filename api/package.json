@@ -3,9 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "build": " ",
-    "start:prod": "node ./bin/www"
+    "start": "nodemon --exec babel-node ./server/bin/index.js",
+    "build": "babel ./server -d build",
+    "start:prod": "node ./build/bin",
+    "test": "jest",
+    "test:coverage": "jest --collect-coverage",
+    "test:watch": "npm run test -- --watch"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -14,5 +17,15 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.0",
+    "@babel/node": "^7.10.5",
+    "@babel/polyfill": "^7.10.4",
+    "@babel/preset-env": "^7.11.0",
+    "jest": "^26.2.2",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
   }
 }

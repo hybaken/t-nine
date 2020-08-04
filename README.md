@@ -14,6 +14,6 @@ API -  Open [http://localhost:3001](http://localhost:3001) to access API.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-Note: For windows use `yarn start-win` instead `yarn start` due to different way of setting environment variable. 
+Note: For windows use `yarn start:win` instead `yarn start` due to different way of setting environment variable. 
 
 

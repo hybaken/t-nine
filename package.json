@@ -7,7 +7,7 @@
     "heroku-postbuild": "yarn run build",
     "install": "(cd client && yarn install) && (cd api && yarn install)",
     "start": "concurrently \"cd client && PORT=3000 yarn start\" \"cd api && PORT=3001 yarn start\"",
-    "start-win": "concurrently \"cd client && set PORT=3000 && yarn start\" \"cd api && set PORT=3001 && yarn start\"",
+    "start:win": "concurrently \"cd client && set PORT=3000 && yarn start\" \"cd api && set PORT=3001 && yarn start\"",
     "start:prod": "cd api && yarn run start:prod"
   },
   "dependencies": {
