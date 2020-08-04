@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var tnineRouter = require('./routes/tnine');
-const react = express.static(path.join(__dirname, '../client/build'))
+const react = express.static(path.join(__dirname, '../../client/build'))
 
 var app = express();
 
@@ -24,7 +24,7 @@ app.use('/tnine', tnineRouter);
 app.use(react)
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'client', 'build'));
+  res.sendFile(path.resolve(__dirname, '..' ,'..', 'client', 'build'));
 });
 
 // catch 404 and forward to error handler
