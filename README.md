@@ -16,4 +16,13 @@ You will also see any lint errors in the console.
 
 Note: For windows use `yarn start:win` instead `yarn start` due to different way of setting environment variable. 
 
+## Properties
 
+For production deployment is required to set REACT_APP_PUBLIC_URL with correct domain url.
+This is required for communicaton client and api.
+
+
+## Demo
+
+Deployed on heroku 
+[https://kw-t-nine.herokuapp.com/](kw-t-nine.herokuapp.com)
