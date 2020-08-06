@@ -7,11 +7,12 @@ var router = express.Router();
 router.post('/', function (req, res, next) {
     if (req.body && req.body.numbers && typeof req.body.numbers === "string") {
         const input = req.body.numbers;
+        const dictionary = req.body.dictionary;
         if (isNaN(input)) {
             res.status(400).send('Invalid request.');
             return;
         }
-        const result = { prediction: convert(input) }
+        const result = { prediction: convert(input, dictionary) }
         res.send(result);
         return;
     }

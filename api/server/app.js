@@ -5,7 +5,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var tnineRouter = require('./routes/tnine');
+import { transformDictionary } from './services/dictionaryService';
+
+
 const react = express.static(path.join(__dirname, '../../client/build'))
+
+transformDictionary();
 
 var app = express();
 

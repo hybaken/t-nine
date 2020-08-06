@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
-import CellButton from '../components/UI/CellButton';
+import CellButton from '../components/UI/CellButton/CellButton';
 import BackspaceIcon from '@material-ui/icons/Backspace';
 import ClearIcon from '@material-ui/icons/Clear';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
@@ -99,13 +99,6 @@ const Cellphone = (props) => {
         setUseDictionary((prev) => ({ enabled: !prev.enabled }));
     }
 
-    const tnineHandler = () => {
-        axios.post(domainUrl.concat('/tnine'), { 'numbers': inputValues.val })
-            .then(response => {
-                setPrediction({ val: [...response.data.prediction] });
-            });
-    }
-
     const pageNext = () => {
         if ((page.val + 1) * PAGE_SIZE < prediction.val.length) {
             setPage((prev) => ({ val: prev.val + 1 }));
@@ -121,21 +114,22 @@ const Cellphone = (props) => {
     useEffect(() => {
         setTimeout(() => {
             if (inputValues.val === inputRef.current.value && inputValues.val !== '') {
-                axios.post(domainUrl.concat('/tnine'), { 'numbers': inputValues.val })
+                axios.post(domainUrl.concat('/tnine'), { 'numbers': inputValues.val, 'dictionary': useDictionary.enabled })
                     .then(response => {
                         setPrediction({ val: [...response.data.prediction] });
                         setPage({ val: 0 });
                         setDisplayArrow({ display: 'block' });
                     }).catch(error => {
                         setPrediction({ val: ['ERROR'] });
+                        setDisplayArrow({ display: 'none' });
                     });;
             }
         }, 1500);
-    }, [inputValues, inputRef])
+    }, [inputValues, inputRef, domainUrl])
 
     useEffect(() => {
         // TODO: add better pageing logic based on length of element 
-        setPredictionPage({ val : [...prediction.val].splice(page.val * PAGE_SIZE, PAGE_SIZE).join(", ")});
+        setPredictionPage({ val: [...prediction.val].splice(page.val * PAGE_SIZE, PAGE_SIZE).join(", ") });
     }, [prediction, page])
 
     const classes = useStyles();
