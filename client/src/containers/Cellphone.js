@@ -125,7 +125,7 @@ const Cellphone = (props) => {
                     });;
             }
         }, 1500);
-    }, [inputValues, inputRef, domainUrl])
+    }, [inputValues, inputRef, useDictionary, domainUrl])
 
     useEffect(() => {
         // TODO: add better pageing logic based on length of element 
