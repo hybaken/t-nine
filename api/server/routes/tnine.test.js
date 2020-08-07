@@ -54,4 +54,13 @@ describe('T9 - Check Validations', () => {
         expect(res.statusCode).toEqual(400);
         expect(res.text).toEqual('Invalid request.');
     });
+    it('should generate request is too long to process', async () => {
+        const res = await request(app)
+            .post('/tnine')
+            .send({
+                numbers: '123456789'
+            });
+        expect(res.statusCode).toEqual(400);
+        expect(res.text).toEqual('Request is too long to process.');
+    });
 })

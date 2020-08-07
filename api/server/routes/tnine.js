@@ -12,6 +12,10 @@ router.post('/', function (req, res, next) {
             res.status(400).send('Invalid request.');
             return;
         }
+        if (input.length > 8) {
+            res.status(400).send('Request is too long to process.');
+            return;
+        }
         const result = { prediction: convert(input, dictionary) }
         res.send(result);
         return;
